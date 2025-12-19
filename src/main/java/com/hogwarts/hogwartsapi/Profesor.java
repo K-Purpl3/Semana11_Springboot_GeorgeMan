@@ -2,17 +2,15 @@ package com.hogwarts.hogwartsapi;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDate;
 
-
 @Entity
-@Table(name = "estudiante")
+@Table(name = "profesor")
 @Data
-public class Student {
+public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_estudiante")
+    @Column(name = "id_profesor")
     private Long id;
 
     @Column(name = "nombre", nullable = false)
@@ -22,12 +20,9 @@ public class Student {
     private String apellido;
 
     @ManyToOne
-    @JoinColumn(name = "id_casa", referencedColumnName = "id_casa")
-    private Casa casa;
+    @JoinColumn(name = "id_asignatura", referencedColumnName = "id_asignatura")
+    private Asignatura asignatura;
 
-    @Column(name = "anyo_curso", nullable = false)
-    private Integer anyoCurso;
-
-    @Column(name = "fecha_nacimiento", nullable = false)
-    private LocalDate fechaNacimiento;
+    @Column(name = "fecha_inicio", nullable = false)
+    private LocalDate fechaInicio;
 }
